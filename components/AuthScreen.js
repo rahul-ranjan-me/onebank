@@ -15,7 +15,7 @@ export default class AuthScreen extends Component {
   bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem('onebanktoken');
     setToken(userToken)
-    this.props.navigation.navigate(userToken ? 'Home' : 'Login');
+    this.props.navigation.navigate(userToken ? 'App' : 'Auth');
   };
 
   render() {

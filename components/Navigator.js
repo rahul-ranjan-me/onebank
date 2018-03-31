@@ -17,9 +17,9 @@ import MyFavoritesScreen from './MyFavorites';
 import OffersScreen from './Offers';
 import PremiumServicesScreen from './PremiumServices';
 
-const RootStack = DrawerNavigator({
-    Auth : { screen: AuthScreen } ,
-    Login : { screen: LoginScreen },
+const AuthStack = DrawerNavigator({Login : { screen: LoginScreen }});
+
+const AppStack = DrawerNavigator({
     Home: { screen: HomeScreen },
     MyAccount: { screen: MyAccountScreen },
     FundTransfer: { screen: FundTransferScreen },
@@ -32,12 +32,17 @@ const RootStack = DrawerNavigator({
     PremiumServices: { screen: PremiumServicesScreen},
   },
   {
-    initialRouteName: 'Auth',
+    initialRouteName: 'Home',
   }
 );
 
-export default class App extends Component {
-  render() {
-    return <RootStack />;
+export default SwitchNavigator(
+  {
+    AuthLoading: AuthScreen,
+    App: AppStack,
+    Auth: AuthStack,
+  },
+  {
+    initialRouteName: 'AuthLoading',
   }
-}
+);
