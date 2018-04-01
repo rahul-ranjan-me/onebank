@@ -16,10 +16,11 @@ import TransactionHistoryScreen from './TransactionHistory';
 import MyFavoritesScreen from './MyFavorites';
 import OffersScreen from './Offers';
 import PremiumServicesScreen from './PremiumServices';
+import AccountDetailsScreen from './AccountDetails'
 
 const AuthStack = DrawerNavigator({Login : { screen: LoginScreen }});
 
-const AppStack = DrawerNavigator({
+const MainStack = DrawerNavigator({
     Home: { screen: HomeScreen },
     MyAccount: { screen: MyAccountScreen },
     FundTransfer: { screen: FundTransferScreen },
@@ -36,10 +37,25 @@ const AppStack = DrawerNavigator({
   }
 );
 
+const AppStack = DrawerNavigator(
+  {
+    Main: {
+      screen: MainStack,
+    },
+    AccountDetails: {
+      screen: AccountDetailsScreen,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  }
+)
+
 export default SwitchNavigator(
   {
     AuthLoading: AuthScreen,
-    App: AppStack,
+    App: MainStack,
     Auth: AuthStack,
   },
   {

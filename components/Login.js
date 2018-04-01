@@ -10,6 +10,7 @@ import { FormInput, Button, Divider } from 'react-native-elements';
 
 import colors from '../config/clrs'
 import pageTitle from '../config/pageTitle'
+import {setToken} from '../config/appConfig'
 
 export default class Login extends Component {
 
@@ -43,6 +44,7 @@ export default class Login extends Component {
 		}).then((response) => response.json())
 			.then((responseJson) => {
         AsyncStorage.setItem('onebanktoken', responseJson.token)
+        setToken(responseJson.token)
         this.props.navigation.navigate('Home');
       })
       .catch((error) => console.log(error))
@@ -92,7 +94,7 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    backgroundColor: colors.bodyBackground,
+    backgroundColor: colors.loginBackground,
     alignItems:'center',
     alignSelf:'center',
     alignContent:'center'
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
     color:'#666',
     fontSize:22,
     marginLeft:20,
+    marginTop: 100,
     marginBottom:5
   }
 });

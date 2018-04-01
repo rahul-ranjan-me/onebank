@@ -57,7 +57,6 @@ export default class Home extends Component {
   }
 
   cardNavigate(id){
-    console.log(id)
     this.props.navigation.navigate(id)
   }
 
@@ -115,7 +114,7 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    backgroundColor: colors.bodyBackground,
+    backgroundColor: colors.loginBackground,
   },
   welcomeText: {
     marginLeft: 20,
